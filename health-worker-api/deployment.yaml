@@ -11,7 +11,9 @@ spec:
     spec:
       containers:
       - name: app
-        image: pir5/health-worker-api:latest
+        image: pir5/health-worker:latest
+        command: ["/health-worker"]
+        args: ["api"]
         readinessProbe:
           tcpSocket:
             port: 8080

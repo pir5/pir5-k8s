@@ -12,6 +12,8 @@ spec:
       containers:
       - name: app
         image: pir5/health-worker:latest
+        command: ["/health-worker"]
+        args: ["worker"]
         volumeMounts:
         - name: worker-conf
           mountPath: /etc/health-worker

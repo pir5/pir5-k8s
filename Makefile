@@ -27,3 +27,17 @@ powerdns-helm:
 
 powerdns-install: powerdns-helm
 	helm install powerdns-helm/ --name powerdns
+
+docker_push: pdns-api/docker_push health-worker/docker_push
+
+pdns-api/docker_push: pdns-api/build_image
+	docker push pir5/pdns-api:latest
+
+health-worker/docker_push: health-worker/build_image
+	docker push pir5/health-worker:latest
+
+pdns-api/build_image:
+	docker build -t pir5/pdns-api --build-arg appname=pdns-api .
+
+health-worker/build_image:
+	docker build -t pir5/health-worker --build-arg appname=health-worker .

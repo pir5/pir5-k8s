@@ -12,6 +12,8 @@ spec:
       containers:
       - name: app
         image: pir5/pdns-api:latest
+        command: ["/pdns-api"]
+        args: ["server"]
         readinessProbe:
           tcpSocket:
             port: 8080
