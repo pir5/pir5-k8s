@@ -2,6 +2,15 @@
 
 ## deploy
 
+### init
+
+Run only first
+
+```
+helm init
+make powerdns-install
+```
+
 ### deploy all compornents
 
 ```
