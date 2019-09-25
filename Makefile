@@ -1,4 +1,11 @@
-deploy: powerdns/deploy pdns-api/deploy health-worker-db/deploy health-worker-redis/deploy health-worker/deploy health-worker-api/deploy health-worker-register/deploy
+deploy:
+	make powerdns/deploy
+	make pdns-api/deploy
+	make health-worker-db/deploy
+	make health-worker-redis/deploy
+	make health-worker/deploy
+	make health-worker-api/deploy
+	make health-worker-register/deploy
 
 powerdns/deploy:
 	cd powerdns-helm
