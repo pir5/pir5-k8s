@@ -30,3 +30,12 @@ make health-worker/deploy
 make health-worker-api/deploy
 make health-worker-register/deploy
 ```
+
+## build and push images
+
+### build and push all images
+
+```
+make docker_push
+```
+
