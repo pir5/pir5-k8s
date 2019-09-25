@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-worker-db
+spec:
+  selector:
+    matchLabels:
+      app: health-worker-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: health-worker-db
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: health-worker-db-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: health-worker-db-initdb
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: health-worker-db-persistent-storage
+        persistentVolumeClaim:
+          claimName: health-worker-db-pv-claim
+      - name: health-worker-db-initdb
+        configMap:
+          name: health-worker-db-initdb-config
