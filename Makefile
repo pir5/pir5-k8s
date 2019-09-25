@@ -7,7 +7,7 @@ deploy:
 	make health-worker-api/deploy
 	make health-worker-register/deploy
 
-powerdns/deploy:
+powerdns/deploy: powerdns-helm
 	cd powerdns-helm
 	helm upgrade powerdns powerdns-helm/
 
@@ -30,7 +30,7 @@ health-worker/deploy:
 	kubectl apply -k health-worker
 
 powerdns-helm:
-	if [ ! -d powerdns-helm ]; then git clone https://github.com/cdwv/powerdns-helm; fi
+	[ -d powerdns-helm ] || git clone https://github.com/cdwv/powerdns-helm
 
 powerdns-install: powerdns-helm
 	helm install powerdns-helm/ --name powerdns
