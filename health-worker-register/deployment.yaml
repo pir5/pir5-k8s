@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: health-worker-register
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: health-worker-register
+    spec:
+      containers:
+      - name: app
+        image: pir5/health-worker-register:latest
+        volumeMounts:
+        - name: worker-conf
+          mountPath: /etc/health-worker
+      volumes:
+      - name: worker-conf
+        configMap:
+          name: worker-conf

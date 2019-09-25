@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-worker-redis
+spec:
+  selector:
+    matchLabels:
+      app: health-worker-redis
+  template:
+    metadata:
+      labels:
+        app: health-worker-redis
+    spec:
+      containers:
+      - image: redis:latest
+        name: redis
+        ports:
+        - containerPort: 6379

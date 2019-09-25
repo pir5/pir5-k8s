@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pdns-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: pdns-api
+    spec:
+      containers:
+      - name: app
+        image: pir5/pdns-api:latest
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: api-conf
+          mountPath: /etc/pdns-api
+      volumes:
+      - name: api-conf
+        configMap:
+          name: api-conf
