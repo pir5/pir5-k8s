@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: health-worker-db
 spec:
+  type: NodePort
   ports:
   - port: 3306
   selector:
     app: health-worker-db
-  clusterIP: None
