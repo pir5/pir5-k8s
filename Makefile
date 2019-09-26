@@ -45,7 +45,7 @@ health-worker/docker_push: health-worker/build_image
 	docker push pir5/health-worker:latest
 
 pdns-api/build_image:
-	docker build -t pir5/pdns-api --no-cache=true --build-arg appname=pdns-api .
+	docker build --no-cache -t pir5/pdns-api --build-arg appname=pdns-api .
 
 health-worker/build_image:
-	docker build -t pir5/health-worker --no-cache=true --build-arg appname=health-worker .
+	docker build --no-cache -t pir5/health-worker --build-arg appname=health-worker .
