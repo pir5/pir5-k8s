@@ -10,6 +10,7 @@ deploy:
 powerdns/deploy: powerdns-helm
 	cd powerdns-helm
 	helm upgrade powerdns powerdns-helm/
+	kubectl apply -k powerdns
 
 pdns-api/deploy:
 	kubectl apply -k pdns-api
