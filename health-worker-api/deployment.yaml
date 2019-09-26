@@ -22,9 +22,9 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - name: worker-conf
+        - name: worker-toml
           mountPath: /etc/health-worker
       volumes:
-      - name: worker-conf
+      - name: worker-toml
         configMap:
-          name: worker-conf
+          name: worker-toml

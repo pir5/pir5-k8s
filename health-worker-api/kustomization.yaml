@@ -5,5 +5,5 @@ resources:
 - deployment.yaml
 configMapGenerator:
 - files:
-  - worker.conf
-  name: worker-conf
+  - worker.toml
+  name: worker-toml

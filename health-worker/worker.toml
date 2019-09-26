@@ -6,3 +6,7 @@ username = "root"
 
 [redis]
 host = "health-worker-redis"
+
+[pdnsAPI]
+host = "pdns-api"
+port = "8080"

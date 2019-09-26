@@ -5,5 +5,5 @@ resources:
 - deployment.yaml
 configMapGenerator:
 - files:
-  - api.conf
-  name: api-conf
+  - api.toml
+  name: api-toml
