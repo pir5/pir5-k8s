@@ -12,12 +12,4 @@ spec:
       containers:
       - name: app
         image: pir5/health-worker:latest
-        command: ["/health-worker"]
-        args: ["register"]
-        volumeMounts:
-        - name: worker-toml
-          mountPath: /etc/health-worker
-      volumes:
-      - name: worker-toml
-        configMap:
-          name: worker-toml
+        command: ["npm start"]
