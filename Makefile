@@ -6,6 +6,7 @@ deploy:
 	make health-worker/deploy
 	make health-worker-api/deploy
 	make health-worker-register/deploy
+	make viron/deploy
 
 powerdns/deploy: powerdns-helm
 	cd powerdns-helm
@@ -46,6 +47,15 @@ health-worker/docker_push: health-worker/build_image
 
 pdns-api/build_image:
 	docker build --no-cache -t pir5/pdns-api --build-arg appname=pdns-api .
+
+viron/biuld_image:
+	docker build -t pir5/viron viron
+
+viron/push_image: viron/biuld_image
+	docker push pir5/viron
+
+viron/deploy:
+	kubectl apply -k viron
 
 health-worker/build_image:
 	docker build --no-cache -t pir5/health-worker --build-arg appname=health-worker .
